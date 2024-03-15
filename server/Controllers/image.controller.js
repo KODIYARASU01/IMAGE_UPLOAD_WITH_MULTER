@@ -3,11 +3,6 @@ import fs from "fs";
 export const ImagePost = async (req, res, next) => {
   try {
     let result = new ImageModel({
-      // name: req.body.name,
-      // image: {
-      //   data: fs.readFileSync("Upload/" + req.file.filename),
-      //   contentType: "image/png",
-      // },
       name: req.file.originalname,
       image: fs.readFileSync("Upload/" + req.file.filename),
       contentType: req.file.mimetype,
