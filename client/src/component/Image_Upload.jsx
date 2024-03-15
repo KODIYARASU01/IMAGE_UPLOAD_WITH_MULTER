@@ -90,30 +90,28 @@ const Image_Upload = () => {
         });
         setLoader(false);
       });
-      let fetchImage = async () => {
-
-        await axios
-          .get("http://localhost:3000/upload")
-          .then((res) => {
-            setData(res.data.data);
-
-          })
-          .catch((Error) => {
-            toast.error(Error.message, {
-              position: "top-center",
-              autoClose: 2000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-              theme: "light",
-              transition: Slide,
-            });
-            setLoader(false);
+    let fetchImage = async () => {
+      await axios
+        .get("http://localhost:3000/upload")
+        .then((res) => {
+          setData(res.data.data);
+        })
+        .catch((Error) => {
+          toast.error(Error.message, {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Slide,
           });
-      };
-      fetchImage();
+          setLoader(false);
+        });
+    };
+    fetchImage();
     // Refresh data every 60 seconds
     const refreshInterval = setInterval(fetchImage, 1000);
 
@@ -210,12 +208,14 @@ const Image_Upload = () => {
                     alt="image"
                   />
                   <div className="delete" onClick={(e) => handleDelete(e)}>
+               
                     <img
                       id={picture._id}
                       ref={inputRef}
                       width="64"
                       height="64"
-                      src="https://img.icons8.com/cute-clipart/64/filled-trash.png"
+                      src="https://img.icons8.com/arcade/64/delete-forever.png"
+                      alt="delete-forever"
                     />
                   </div>
                 </div>
